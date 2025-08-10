@@ -1,0 +1,225 @@
+/* Animações customizadas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Classes de animação */
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* Estilos para estrutura de conteúdo */
+.content-hierarchy {
+    border-left: 4px solid hsl(var(--p));
+    padding-left: 1rem;
+    margin-left: 0.5rem;
+}
+
+.h2-section {
+    border-left: 3px solid hsl(var(--s));
+    padding-left: 0.75rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.h3-subsection {
+    border-left: 2px solid hsl(var(--a));
+    padding-left: 0.5rem;
+    margin-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para FAQ */
+.faq-item {
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateX(5px);
+}
+
+/* Estilos para sugestões de mídia */
+.media-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradiente personalizado para hero */
+.hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--p)) 0%, hsl(var(--s)) 100%);
+}
+
+/* Estilos para contador de uso */
+.usage-indicator {
+    position: relative;
+    overflow: hidden;
+}
+
+.usage-indicator::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: hsl(var(--su));
+    transition: width 0.3s ease;
+}
+
+.usage-indicator[data-usage="1"]::after { width: 33.33%; }
+.usage-indicator[data-usage="2"]::after { width: 66.66%; }
+.usage-indicator[data-usage="3"]::after { width: 100%; background: hsl(var(--er)); }
+
+/* Estilos para loading states */
+.skeleton-text {
+    background: linear-gradient(90deg, hsl(var(--b2)) 25%, hsl(var(--b3)) 50%, hsl(var(--b2)) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Estilos responsivos customizados */
+@media (max-width: 768px) {
+    .content-hierarchy,
+    .h2-section,
+    .h3-subsection {
+        margin-left: 0;
+        border-left-width: 2px;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para impressão */
+@media print {
+    .navbar,
+    .footer,
+    .modal,
+    .btn,
+    #premium-btn,
+    #usage-counter {
+        display: none !important;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    h1 { font-size: 18pt; }
+    h2 { font-size: 16pt; }
+    h3 { font-size: 14pt; }
+}
+
+/* Estilos para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Estilos para modo escuro customizados */
+[data-theme="dark"] .content-hierarchy {
+    border-left-color: hsl(var(--pf));
+}
+
+[data-theme="dark"] .h2-section {
+    border-left-color: hsl(var(--sf));
+}
+
+[data-theme="dark"] .h3-subsection {
+    border-left-color: hsl(var(--af));
+}
+
+/* Estilos para indicadores de premium */
+.premium-feature {
+    position: relative;
+}
+
+.premium-feature::after {
+    content: "PREMIUM";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: hsl(var(--wa));
+    color: hsl(var(--wac));
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Estilos para feedback visual */
+.success-highlight {
+    background: hsl(var(--su) / 0.1);
+    border: 1px solid hsl(var(--su));
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.error-highlight {
+    background: hsl(var(--er) / 0.1);
+    border: 1px solid hsl(var(--er));
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    animation: fadeInUp 0.5s ease-out;
+}
