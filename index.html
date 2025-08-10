@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEOnoTopo - Gerador de Estrutura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+	
+	<meta name="description" content="Crie a estrutura de conteúdo perfeita para ranquear no topo. Nossa ferramenta analisa a intenção de busca para gerar H1, H2, FAQ e sugestões de mídia que aceleram o seu SEO.">
+	<meta name="keywords" content="gerador de conteúdo, estrutura de conteúdo, SEO, intenção de busca, pauta de conteúdo, ranquear, ferramenta de SEO, otimização de conteúdo, SERP, H1, H2">
+	<meta name="author" content="Seonotopo">
+	<meta property="og:title" content="SEOnoTopo - Gerador de Estrutura">
+	<meta property="og:description" content="Crie a estrutura de conteúdo perfeita para ranquear no topo. Nossa ferramenta analisa a intenção de busca para gerar H1, H2, FAQ e sugestões de mídia que aceleram o seu SEO.">
+	<meta property="og:image" content="https://imgur.com/H7ajYBg.png">
+	<meta property="og:url" content="seonotopo.vercel.app">
+	<meta property="og:type" content="website">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="SEOnoTopo - Gerador de Estrutura">
+	<meta name="twitter:description" content="Crie a estrutura de conteúdo perfeita para ranquear no topo. Nossa ferramenta analisa a intenção de busca para gerar H1, H2, FAQ e sugestões de mídia que aceleram o seu SEO.">
+	<meta name="twitter:image" content="https://imgur.com/H7ajYBg.png">
+	
+	<!-- Apple Touch Icon (para dispositivos iOS) -->
+	<link rel="apple-touch-icon" href="https://imgur.com/H7ajYBg.png" sizes="180x180">	
+	<!-- Android desktop Touch Icon  -->
+    <link rel="icon" type="image/x-icon" href="https://imgur.com/H7ajYBg.png">
+	<!-- Adsense -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7078290089826021"crossorigin="anonymous"></script>
+	
+	
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "WebSite",
+	  "name": "SEOnoTopo",
+	  "url": "https://www.seonotopo.vercel.app/"
+	}
+	</script>
+	
+</head>
+<body class="bg-base-100">
+    <!-- Header -->
+    <header class="navbar bg-primary text-primary-content shadow-lg">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="#features">Recursos</a></li>
+                    <li><a href="#pricing">Preços</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl">SEO no Topo</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="#features">Recursos</a></li>
+                <li><a href="#pricing">Preços</a></li>
+                <li><a href="#about">Sobre</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <div class="badge badge-secondary mr-4" id="usage-counter">
+                Análises hoje: <span id="daily-count">0</span>/3
+            </div>
+            <button class="btn btn-secondary" id="premium-btn">Upgrade Premium</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-96 bg-gradient-to-r from-primary to-secondary">
+        <div class="hero-content text-center text-primary-content">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">Estrutura Perfeita para SEO</h1>
+                <p class="mb-5">Gere estruturas de conteúdo otimizadas baseadas na intenção de busca e análise de SERP</p>
+                <button class="btn btn-accent btn-lg" onclick="document.getElementById('generator').scrollIntoView()">
+                    Começar Agora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Generator -->
+    <section id="generator" class="container mx-auto px-4 py-12">
+        <div class="card bg-base-200 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title text-2xl mb-6">Gerador de Estrutura de Conteúdo</h2>
+                
+                <!-- Input Form -->
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text">Palavra-chave principal</span>
+                    </label>
+                    <div class="join w-full">
+                        <input type="text" id="keyword-input" placeholder="Ex: como fazer marketing digital" 
+                               class="input input-bordered join-item flex-1" />
+                        <select id="intent-select" class="select select-bordered join-item">
+                            <option value="informational">Informacional</option>
+                            <option value="commercial">Comercial</option>
+                            <option value="navigational">Navegacional</option>
+                            <option value="transactional">Transacional</option>
+                        </select>
+                        <button id="generate-btn" class="btn btn-primary join-item">
+                            <span class="loading loading-spinner loading-sm hidden" id="loading"></span>
+                            Gerar Estrutura
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Container -->
+                <div id="results-container" class="mt-8 hidden">
+                    <!-- Keyword Analysis -->
+                    <div class="card bg-base-100 shadow-md mb-6">
+                        <div class="card-body">
+                            <h3 class="card-title">Análise da Palavra-chave</h3>
+                            <div class="stats stats-vertical lg:stats-horizontal shadow">
+                                <div class="stat">
+                                    <div class="stat-title">Dificuldade</div>
+                                    <div class="stat-value text-primary" id="difficulty-score">-</div>
+                                    <div class="stat-desc">Escala 0-100</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-title">Volume de Busca</div>
+                                    <div class="stat-value text-secondary" id="search-volume">-</div>
+                                    <div class="stat-desc">Buscas mensais</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-title">Competição</div>
+                                    <div class="stat-value text-accent" id="competition-level">-</div>
+                                    <div class="stat-desc">Baixa/Média/Alta</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Structure -->
+                    <div class="card bg-base-100 shadow-md mb-6">
+                        <div class="card-body">
+                            <h3 class="card-title">Estrutura de Conteúdo Sugerida</h3>
+                            <div id="content-structure">
+                                <!-- H1 -->
+                                <div class="mb-4">
+                                    <div class="badge badge-primary mb-2">H1</div>
+                                    <h1 class="text-2xl font-bold" id="generated-h1">Título principal será gerado aqui</h1>
+                                </div>
+                                
+                                <!-- H2/H3 Structure -->
+                                <div id="h2-structure" class="space-y-4">
+                                    <!-- Dynamic H2/H3 content will be inserted here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="card bg-base-100 shadow-md mb-6">
+                        <div class="card-body">
+                            <h3 class="card-title">FAQ Otimizado</h3>
+                            <div id="faq-container" class="space-y-2">
+                                <!-- Dynamic FAQ content will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Media Suggestions -->
+                    <div class="card bg-base-100 shadow-md mb-6">
+                        <div class="card-body">
+                            <h3 class="card-title">Sugestões de Mídia</h3>
+                            <div id="media-suggestions" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <!-- Dynamic media suggestions will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export Options -->
+                    <div class="card bg-base-100 shadow-md">
+                        <div class="card-body">
+                            <h3 class="card-title">Exportar Estrutura</h3>
+                            <div class="card-actions">
+                                <button class="btn btn-outline" id="export-json">Exportar JSON</button>
+                                <button class="btn btn-outline" id="export-markdown">Exportar Markdown</button>
+                                <button class="btn btn-primary" id="export-premium" disabled>
+                                    Exportar Word (Premium)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-base-200">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Recursos Principais</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card bg-base-100 shadow-md">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">🔍</div>
+                        <h3 class="card-title justify-center">Análise SERP</h3>
+                        <p>Analisa os primeiros resultados do Google para sua palavra-chave</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-md">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">📝</div>
+                        <h3 class="card-title justify-center">Estrutura H1/H2/H3</h3>
+                        <p>Gera hierarquia de títulos otimizada para SEO</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-md">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">❓</div>
+                        <h3 class="card-title justify-center">FAQ Otimizado</h3>
+                        <p>Perguntas frequentes baseadas em People Also Ask</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-md">
+                    <div class="card-body text-center">
+                        <div class="text-4xl mb-4">🎨</div>
+                        <h3 class="card-title justify-center">Sugestões de Mídia</h3>
+                        <p>Recomendações de imagens e vídeos para o conteúdo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Planos e Preços</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Free Plan -->
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-2xl">Gratuito</h3>
+                        <div class="text-4xl font-bold text-primary mb-4">R$ 0</div>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                3 análises por dia
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                Estrutura H1/H2/H3 básica
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                FAQ simples
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                Sugestões básicas de mídia
+                            </li>
+                        </ul>
+                        <div class="card-actions">
+                            <button class="btn btn-outline w-full">Começar Grátis</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="card bg-primary text-primary-content shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-2xl">Premium</h3>
+                        <div class="text-4xl font-bold mb-4">R$ 29/mês</div>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                Análises ilimitadas
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                Análise avançada de concorrentes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                Palavras-chave relacionadas
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                Exportação em múltiplos formatos
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-success mr-2">✓</span>
+                                Suporte prioritário
+                            </li>
+                        </ul>
+                        <div class="card-actions">
+                            <button class="btn btn-secondary w-full">Upgrade Agora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Modal -->
+    <dialog id="premium-modal" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Upgrade para Premium</h3>
+            <p class="py-4">Desbloqueie recursos avançados e análises ilimitadas!</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn">Fechar</button>
+                    <button class="btn btn-primary ml-2">Assinar Premium</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Limit Reached Modal -->
+    <dialog id="limit-modal" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Limite Diário Atingido</h3>
+            <p class="py-4">Você já utilizou suas 3 análises gratuitas hoje. Faça upgrade para Premium para análises ilimitadas!</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn">Fechar</button>
+                    <button class="btn btn-primary ml-2" onclick="document.getElementById('premium-modal').showModal()">Ver Premium</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+        <aside>
+            <div class="text-4xl mb-4">📊</div>
+            <p class="font-bold">SEO no Topo</p>
+            <p>© Seo No Topo – Todos os direitos reservados 2025</p>
+        </aside>
+        <nav>
+            <div class="grid grid-flow-col gap-4">
+                <a class="link link-hover">Termos de Uso</a>
+                <a class="link link-hover">Política de Privacidade</a>
+                <a class="link link-hover">Contato</a>
+            </div>
+        </nav>
+    </footer>
+
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
